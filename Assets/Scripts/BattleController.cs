@@ -31,7 +31,10 @@ public class BattleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            AdvanceTurn();
+        }
     }
 
     public void SpendPlayerMana(int amoungToSpend)
@@ -44,5 +47,33 @@ public class BattleController : MonoBehaviour
         }
 
         UIController.instance.SetPlayerManaText(playerMana);
+    }
+
+    public void AdvanceTurn()
+    {
+        currentPhase++;
+
+        if ((int)currentPhase> System.Enum.GetValues(typeof(TurnOrder)).Length) 
+        {
+            currentPhase = 0;
+        }
+
+        switch (currentPhase)
+        {
+            case TurnOrder.playerActive:
+                break;
+            case TurnOrder.PlayerCardAtacks:
+                Debug.Log("Skipping player card attacks");
+                AdvanceTurn();
+                break;
+            case TurnOrder.enemyActive:
+                Debug.Log("Skipping Enemy Actions");
+                AdvanceTurn();
+                break;
+            case TurnOrder.enemyCardAttacks:
+                Debug.Log("Skipping Enemy card attacks");
+                AdvanceTurn();
+                break;
+        }
     }
 }
