@@ -66,12 +66,12 @@ public class Card : MonoBehaviour
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotateSpeed * Time.deltaTime);
 
-        if (isSelected)
+        if (isSelected )
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, 100f, whatIsDesktop))
+            if(Physics.Raycast(ray, out hit, 100f, whatIsDesktop) )
             {
                 MoveToPoint(hit.point + new Vector3(0f, 2f, 0f), Quaternion.identity);
                 
@@ -81,9 +81,9 @@ public class Card : MonoBehaviour
             {
                 ReturnToHand();
             }
-            if (Input.GetMouseButtonDown(0) && justPressed == false)
+            if (Input.GetMouseButtonDown(0) && justPressed == false )
             {
-                if(Physics.Raycast(ray, out hit, 100f, whatIsPlacement))
+                if(Physics.Raycast(ray, out hit, 100f, whatIsPlacement) && BattleController.instance.currentPhase == BattleController.TurnOrder.playerActive)
                 {
                     CardPlacePoint selectedPoint = hit.collider.GetComponent<CardPlacePoint>();
 
@@ -116,7 +116,10 @@ public class Card : MonoBehaviour
                 {
                     ReturnToHand();
                 }
+                
             }
+            
+            
         }
         justPressed = false;
     }
@@ -129,7 +132,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (inHand)
+        if (inHand && BattleController.instance.currentPhase == BattleController.TurnOrder.playerActive)
         {
             MoveToPoint(theHC.cardPostions[handPosition] + new Vector3(0f, 1f, .5f), Quaternion.identity);
         }
@@ -145,7 +148,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (inHand)
+        if (inHand )
         {
             isSelected = true;
             theCol.enabled = false;
