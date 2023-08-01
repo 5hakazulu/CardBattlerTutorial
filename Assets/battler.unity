@@ -159,6 +159,7 @@ MonoBehaviour:
   manaWarning: {fileID: 723748261}
   manaWarningTime: 2
   drawCardButton: {fileID: 1819970051}
+  endTurnButton: {fileID: 1480574482}
 --- !u!114 &227743749
 MonoBehaviour:
   m_ObjectHideFlags: 0
