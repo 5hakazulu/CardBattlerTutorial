@@ -13,8 +13,11 @@ public class BattleController : MonoBehaviour
 
     public int startingMana = 4, maxMana = 12;
     public int playerMana;
+    public int currentPlayerMaxMana;
 
     public int startingCardsAmount = 5;
+
+    public int cardsToDrawPerTurn = 2;
 
     public enum TurnOrder { playerActive, PlayerCardAtacks, enemyActive, enemyCardAttacks}
     public TurnOrder currentPhase;
@@ -22,8 +25,10 @@ public class BattleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerMana = startingMana;
-        UIController.instance.SetPlayerManaText(playerMana);
+        //playerMana = startingMana;
+        //UIController.instance.SetPlayerManaText(playerMana);
+        currentPlayerMaxMana = startingMana;
+        fillPlayerMana();
 
         DeckController.instance.DrawMultipleCards(startingCardsAmount);
     }
@@ -49,6 +54,13 @@ public class BattleController : MonoBehaviour
         UIController.instance.SetPlayerManaText(playerMana);
     }
 
+    public void fillPlayerMana()
+    {
+
+        playerMana = currentPlayerMaxMana;
+        UIController.instance.SetPlayerManaText(playerMana);
+    }
+
     public void AdvanceTurn()
     {
         currentPhase++;
@@ -63,10 +75,16 @@ public class BattleController : MonoBehaviour
             case TurnOrder.playerActive:
                 UIController.instance.endTurnButton.SetActive(true);
                 UIController.instance.drawCardButton.SetActive(true);
+                if(currentPlayerMaxMana< maxMana)
+                {
+                    currentPlayerMaxMana++;
+                }
+                fillPlayerMana();
+                DeckController.instance.DrawMultipleCards(cardsToDrawPerTurn);
                 break;
             case TurnOrder.PlayerCardAtacks:
                 Debug.Log("Skipping player card attacks");
-                //AdvanceTurn();
+                AdvanceTurn();
                 break;
             case TurnOrder.enemyActive:
                 Debug.Log("Skipping Enemy Actions");
