@@ -632,6 +632,65 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3, y: 1.8, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &548006158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548006160}
+  - component: {fileID: 548006159}
+  m_Layer: 0
+  m_Name: Card Points Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &548006159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548006158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369588b2962a2f346b82779855b179cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 0.25
+  playerCardPoints:
+  - {fileID: 256467583}
+  - {fileID: 2126999038}
+  - {fileID: 1557260064}
+  - {fileID: 769672352}
+  - {fileID: 496585104}
+  enemyCardPoints:
+  - {fileID: 747915368}
+  - {fileID: 812877478}
+  - {fileID: 1426620419}
+  - {fileID: 1509551127}
+  - {fileID: 983878657}
+--- !u!4 &548006160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548006158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8508825, y: -1.1459165, z: -0.33410215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1020805887}
+  - {fileID: 974885030}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639185257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 974885030}
   m_Layer: 0
-  m_Name: Enemy Card Points (1)
+  m_Name: Enemy Card Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1329,7 +1388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974885029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.25}
+  m_LocalPosition: {x: -1.8508825, y: 1.1459165, z: 2.5841022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1338,8 +1397,8 @@ Transform:
   - {fileID: 1426620418}
   - {fileID: 1509551126}
   - {fileID: 983878656}
-  m_Father: {fileID: 1773341088}
-  m_RootOrder: 2
+  m_Father: {fileID: 548006160}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &983878655
 GameObject:
@@ -1576,7 +1635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020805886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.8508825, y: 1.1459165, z: 0.33410215}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1585,8 +1644,8 @@ Transform:
   - {fileID: 1557260063}
   - {fileID: 769672350}
   - {fileID: 496585102}
-  m_Father: {fileID: 1773341088}
-  m_RootOrder: 1
+  m_Father: {fileID: 548006160}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1076515817
 GameObject:
@@ -2640,8 +2699,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 991355331}
-  - {fileID: 1020805887}
-  - {fileID: 974885030}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

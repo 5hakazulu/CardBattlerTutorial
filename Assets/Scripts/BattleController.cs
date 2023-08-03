@@ -83,8 +83,9 @@ public class BattleController : MonoBehaviour
                 DeckController.instance.DrawMultipleCards(cardsToDrawPerTurn);
                 break;
             case TurnOrder.PlayerCardAtacks:
-                Debug.Log("Skipping player card attacks");
-                AdvanceTurn();
+                //Debug.Log("Skipping player card attacks");
+                //AdvanceTurn();
+                CardsPointsController.instance.PlayerAttack();
                 break;
             case TurnOrder.enemyActive:
                 Debug.Log("Skipping Enemy Actions");
